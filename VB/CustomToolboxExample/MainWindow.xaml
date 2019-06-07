@@ -1,0 +1,38 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"
+        xmlns:dxdiag="http://schemas.devexpress.com/winfx/2008/xaml/diagram" x:Class="CustomToolboxExample.MainWindow"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        <dxdiag:DiagramControl Grid.Row="0" Name="diagram"/>
+        <ListBox x:Name="ShapeListBox" Tag="{Binding ElementName=diagram}" Grid.Column="1">
+            <ListBox.ItemContainerStyle>
+                <Style TargetType="ListBoxItem">
+                    <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+                    <Setter Property="dxmvvm:Interaction.BehaviorsTemplate">
+                        <Setter.Value>
+                            <DataTemplate>
+                                <ItemsControl>
+                                    <dxdiag:DiagramToolBehavior DiagramTool="{Binding}" Diagram="{Binding RelativeSource={RelativeSource AncestorType=ListBox}, Path=Tag}" />
+                                </ItemsControl>
+                            </DataTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </ListBox.ItemContainerStyle>
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <dxdiag:ShapeToolboxPreview IsCompact="True"  ViewMode="IconsOnly" Diagram="{Binding ElementName=diagram}" ItemTool="{Binding}" Theme="{Binding ElementName=diagram, Path=Theme}"/>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+    </Grid>
+</Window>
