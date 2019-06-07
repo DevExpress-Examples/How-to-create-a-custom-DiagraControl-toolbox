@@ -1,4 +1,4 @@
-# How-to-create-a-custom-DiagraControl-toolbox
+# How to create a custom DiagraControl toolbox
 
 To create a custom toolbox using a standard ListBox, populate ListBox with the collection of diagram item tools: 
 ```cs
