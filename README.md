@@ -9,7 +9,7 @@ To create a custom toolbox using a standard ListBox, populate ListBox with the c
 ```cs
 ShapeListBox.ItemsSource = BasicShapes.Stencil.Tools;
 ```
-Aftehr that, attach **DiagramToolBehavior** to items in ListBox using ItemContainerStyle:
+After that, attach **DiagramToolBehavior** to items in ListBox using ItemContainerStyle:
 
 ```xaml
 <ListBox.ItemContainerStyle>
